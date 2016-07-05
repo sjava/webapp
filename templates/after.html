@@ -1,0 +1,78 @@
+{% extends "layout2.html" %}
+{% block title %}割接后检查{%endblock%}
+{% block scripts %}
+{{super()}}
+<script src="{{url_for('.static', filename='showCheckAfter.js')}}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row myrow">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+
+      <ul id="myTabs" class="nav nav-tabs" role="tablist">
+        <li role="presentation">
+          <a href="#ports" role="tab" data-toggle="tab" aria-controls="ports" aria-expanded="true">
+            端口信息
+          </a>
+        </li>
+        <li role="presentation">
+          <a href="#vlans" role="tab" data-toggle="tab" aria-controls="vlans">
+            VLAN信息
+          </a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="ports" class="tab-pane" role="tabpanel">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>port</th>
+                <th>desc</th>
+                <th>state</th>
+                <th>receive</th>
+                <th>send</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for p in ports[1] %}
+              <tr>
+                <td>{{p['name']}}</td>
+                <td>{{p['desc']}}</td>
+                <td>{{p['state']}}</td>
+                <td>{{p['inTraffic']|round(1)}}</td>
+                <td>{{p['outTraffic']|round(1)}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+        <div id="vlans" class="tab-pane" role="tabpanel">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>vlan</th>
+                <th>割接前在线用户</th>
+                <th>割接后在线用户<small>(not find表示vlan在新交换机上未配置)</small></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for v,u1,u2 in vlan_users %}
+              <tr>
+                <td>{{v}}</td>
+                <td>{{u1}}</td>
+                <td>{{u2}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+{% endblock %}

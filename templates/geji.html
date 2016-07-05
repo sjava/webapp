@@ -1,0 +1,66 @@
+{% extends "layout2.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet"
+href="{{url_for('.static', filename='fakeLoader.css')}}">
+{% endblock %}
+
+
+{% block scripts %}
+{{super()}}
+<script src="{{url_for('.static', filename='fakeLoader.min.js')}}"></script>
+{% endblock %}
+
+{% block content %}
+<div id="fakeLoader"></div>
+<div class="container">
+  <div class="row myrow">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+      <ul class="list-group">
+        <li class="list-group-item">割接任务:</li>
+        {% for row in task %}
+        <li class="list-group-item">
+          <a href="#" class="taskIP" data-id="{{row[0]}}">{{row[1]}}</a>
+          <mark>{{row[7]}}</mark>
+          <div class="pull-right">
+            <a href="{{url_for('check_before',id=row[0])}}" class="myCheck">
+              <span class="label label-default">割接前信息采集</span>
+            </a>
+            <a href="{{url_for('check_after',id=row[0])}}" class="myCheck">
+              <span class="label label-default">割接后核查</span>
+            </a>
+            {% if row[5] and row[6] %}
+            <a href="{{url_for('show_check_result',id=row[0])}}" class="myCheck">
+              <span class="label label-default">查看上次核查结果</span>
+            </a>
+            {% endif %}
+          </div>
+        </li>
+        {% endfor %}
+        <li class="list-group-item">
+          <a href="{{url_for('task_add')}}">
+            <span class="label label-default">增加割接任务</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-lg-3"></div>
+  </div>
+</div>
+<div id="myModal" class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">任务详情</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

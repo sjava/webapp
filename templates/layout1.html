@@ -1,0 +1,45 @@
+{% extends "bootstrap/base.html" %}
+{% block metas %}
+{{super()}}
+<meta charset="UTF-8">
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static',filename='mystyle.css') }}">
+{% endblock %}
+
+{% block scripts %}
+{{super()}}
+<script src="{{url_for('.static', filename='myscripts.js')}}"></script>
+<script src="{{url_for('.static', filename='myMenu.js')}}"></script>
+{% endblock %}
+
+{% block navbar %}
+<ul class="nav nav-tabs">
+  <li class="dropdown" role="presentation">
+    <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      流量
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="{{url_for('sw_groups')}}">SW汇聚统计</a></li>
+      <li><a href="{{url_for('sw_ports')}}">SW端口统计</a></li>
+      <li><a href="{{url_for('olt_groups')}}">OLT汇聚统计</a></li>
+      <li><a href="{{url_for('olt_ports')}}">OLT端口统计</a></li>
+    </ul>
+  </li>
+  <li role="presentation"><a href="{{url_for('bingfa')}}">Bras并发</a></li>
+  <li class="dropdown" role="presentation">
+    <a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      设备巡检
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="{{url_for('sw_xunjian')}}">SW巡检结果</a></li>
+      <li><a href="{{url_for('olt_xunjian')}}">OLT巡检结果</a></li>
+    </ul>
+  </li>
+  <li role="presentation"><a href="{{url_for('geji')}}">割接工具</a></li>
+</ul>
+{%endblock%}

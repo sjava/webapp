@@ -1,0 +1,18 @@
+{% extends "layout2.html" %}
+{% block title %}割接后检查{%endblock%}
+{% block scripts %}
+{{super()}}
+<script src="{{url_for('.static', filename='showCheckAfter.js')}}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row myrow">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+      <p>检查出错：割接前信息没有采集！</p>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+{% endblock %}

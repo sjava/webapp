@@ -1,0 +1,25 @@
+{% extends "layout1.html" %}
+
+{% block content %}
+<table class="table">
+  <caption class="text-center">Bras并发统计({{collTime}})</caption>
+  <thead>
+    <tr>
+      <th>ip</th>
+      <th>slot</th>
+      <th>最大并发数</th>
+      <th>最大并发的日期</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for x in rslt %}
+      <tr>
+        <td>{{x['ip']}}</td>
+        <td>{{x['slot']}}</td>
+        <td>{{x['peakUsers']}}</td>
+        <td>{{x['peakTime']}}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

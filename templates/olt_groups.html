@@ -1,0 +1,31 @@
+{% extends "layout1.html" %}
+
+{% block content %}
+<table class="table">
+  <caption class="text-center">OLT流量({{collTime}})</caption>
+  <thead>
+    <tr>
+      <th>区域</th>
+      <th>ip</th>
+      <th>汇聚组</th>
+      <th>汇聚组描述</th>
+      <th>总带宽</th>
+      <th>下行占比</th>
+      <th>上行占比</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for x in rslt %}
+  <tr>
+    <td>{{x['area']}}</td>
+    <td>{{x['ip']}}</td>
+    <td>{{x['name']}}</td>
+    <td>{{x['desc']}}</td>
+    <td>{{x['bw']}}</td>
+    <td>{{x['xiaxing']}}</td>
+    <td>{{x['shangxing']}}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

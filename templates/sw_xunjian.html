@@ -1,0 +1,102 @@
+{% extends "layout1.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block content %}
+<div class="container">
+  <div class="row myrow">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+
+      <ul id="myTabs" class="nav nav-tabs" role="tablist">
+        <li role="presentation">
+          <a href="#myTab1" role="tab" data-toggle="tab" aria-controls="myTab1" aria-expanded="true">
+            交换机单主控
+          </a>
+        </li>
+        <li role="presentation">
+          <a href="#myTab2" role="tab" data-toggle="tab" aria-controls="myTab2">
+            交换机电源隐患
+          </a>
+        </li>
+        <li role="presentation">
+          <a href="#myTab3" role="tab" data-toggle="tab" aria-controls="myTab3">
+            未部署LACP的SW链路组
+          </a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="myTab1" class="tab-pane" role="tabpanel">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>属地</th>
+                <th>设备名称</th>
+                <th>设备IP</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for p in singleMainCard %}
+              <tr>
+                <td>{{p['area']}}</td>
+                <td>{{p['name']}}</td>
+                <td>{{p['ip']}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+        <div id="myTab2" class="tab-pane" role="tabpanel">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>属地</th>
+                <th>设备名称</th>
+                <th>设备IP</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for p in powerInfo %}
+              <tr>
+                <td>{{p['area']}}</td>
+                <td>{{p['name']}}</td>
+                <td>{{p['ip']}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+        <div id="myTab3" class="tab-pane" role="tabpanel">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>属地</th>
+                <th>设备名称</th>
+                <th>设备IP</th>
+                <th>链路组</th>
+                <th>链路组描述</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for p in lacp %}
+              <tr>
+                <td>{{p['area']}}</td>
+                <td>{{p['hostname']}}</td>
+                <td>{{p['ip']}}</td>
+                <td>{{p['name']}}</td>
+                <td>{{p['desc']}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+{% endblock %}

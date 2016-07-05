@@ -1,0 +1,39 @@
+{% extends "layout2.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+<div class="container">
+  <div class="row myrow">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-5">
+      <div id="taskAdd">
+        {{wtf.quick_form(form)}}
+      </div>
+    </div>
+    <div class="col-lg-5">
+      割接任务描述格式：
+      <p class="text-left">
+        area:属地(包含乡镇)<br>
+        old_sw:ip:sw型号<br>
+        old_bas:ip:bas型号:汇聚组号(一台bas一行)<br>
+        new_sw:ip:sw型号<br>
+        new_bas:ip:bas型号:汇聚组号(一台bas一行)<br>
+      </p>
+      <p>
+        sw的型号：S85,S89,S8905E,S93,T64G;bas的型号：M6k,ME60
+      </p>
+
+      举例：
+      <p class="text-left">
+        area:建湖上冈<br>
+        old_sw:218.92.224.96:T64G<br>
+        old_bas:61.177.248.90:M6k:1<br>
+        old_bas:61.177.248.85:ME60:4<br>
+        new_sw:117.93.183.226:S93<br>
+        new_bas:61.177.248.90:M6k:1<br>
+        new_bas:61.177.248.85:ME60:4<br>
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

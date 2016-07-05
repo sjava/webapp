@@ -1,0 +1,14 @@
+.list-group-item>.mylabel {
+  float:right;
+}
+.myrow {
+  padding-top: 30px;
+}
+#taskAdd textarea {
+  height:200px;
+}
+@media (max-width: 500px) {
+  .row .col-lg-6  .pull-right {
+    float: none !important;
+  }
+}

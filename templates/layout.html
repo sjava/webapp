@@ -1,0 +1,15 @@
+{% extends "bootstrap/base.html" %}
+{% block metas %}
+{{super()}}
+<meta charset="UTF-8">
+{% endblock %}
+
+{% block navbar %}
+<ul class="nav nav-tabs">
+  <li role="presentation" {% if request.path == '/' %}class="active"{% endif %}><a href="{{url_for('sw_groups')}}">SW按汇聚组统计</a></li>
+  <li role="presentation" {% if request.path == '/ports' %}class="active"{% endif %}><a href="{{url_for('sw_ports')}}">SW按端口统计</a></li>
+  <li role="presentation" {% if request.path == '/olt_groups' %}class="active"{% endif %}><a href="{{url_for('olt_groups')}}">OLT按汇聚组统计</a></li>
+  <li role="presentation" {% if request.path == '/olt_ports' %}class="active"{% endif %}><a href="{{url_for('olt_ports')}}">OLT按端口统计</a></li>
+  <li role="presentation" {% if request.path == '/bingfa' %}class="active"{% endif %}><a href="{{url_for('bingfa')}}">Bras并发统计</a></li>
+</ul>
+{%endblock%}
